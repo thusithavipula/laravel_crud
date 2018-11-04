@@ -11,7 +11,7 @@ class SubjectService {
 
     protected $rules = [
         'name' => 'required',
-        'duration' => 'required|integer|between:1,5',
+        'duration' => 'required|integer|between:1,6',
         'category' => 'required',
         'description' => 'required',
     ];

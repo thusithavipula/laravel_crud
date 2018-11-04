@@ -8,5 +8,14 @@ Installation
 - run php artisan serve
 - That should be all
 
+If test data is needed run these factory commands
+- factory('App\Instructor', 50)->create();
+- factory('App\Subject', 50)->create();
+- factory('App\Student', 50)->create();
+
+Login 
+- Username : admin@email.com
+- Password : 123456
+
 Todo 
 Improve the user role module to integrate it with Student and Instructors for multiple user role management 

@@ -17,7 +17,7 @@ class CreateSubjectsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('short_code');
-            $table->string('description');
+            $table->text('description');
             $table->string('duration');
             $table->string('category');
             $table->boolean('is_active');

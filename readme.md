@@ -19,3 +19,4 @@ Login
 
 Todo 
 Improve the user role module to integrate it with Student and Instructors for multiple user role management 
+Have to learn about updated laravel 5.5 test cases to write better unit tests

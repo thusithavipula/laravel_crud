@@ -9,7 +9,7 @@ use App\StudentSubject;
 
 class StudentService {
 
-    protected $rules = [
+    protected $rules = [ //validation rules
         'title' => 'required',
         'first_name' => 'required',
         'last_name' => 'required',
@@ -82,8 +82,8 @@ class StudentService {
         return array('message' => 'Success', 'type' => 'success', 'data' => $student);
     }
 
-    public function syncSubjects($student_id, $subject_studies) {
-        StudentSubject::where('student_id', $student_id)->delete();
+    public function syncSubjects($student_id, $subject_studies) { //sync the selected subject with the db
+        StudentSubject::where('student_id', $student_id)->delete(); //delete old records
         foreach ($subject_studies as $value) {
             $student_subject = new StudentSubject;
             $student_subject->student_id = $student_id;
@@ -92,7 +92,7 @@ class StudentService {
         }
     }
 
-    public function getSummary() {
+    public function getSummary() { //Get Summary of active and inactive students
         $collection = DB::table('students')
                 ->whereNull('deleted_at')
                 ->select('is_active', DB::raw('count(*) as total'))

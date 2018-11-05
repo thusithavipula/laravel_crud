@@ -9,7 +9,7 @@ use App\InstructorSubject;
 
 class InstructorService {
 
-    protected $rules = [
+    protected $rules = [ //validation rules
         'title' => 'required',
         'first_name' => 'required',
         'last_name' => 'required',
@@ -82,7 +82,7 @@ class InstructorService {
         return array('message' => 'Success', 'type' => 'success', 'data' => $instructor);
     }
 
-    public function syncSubjects($instructor_id, $subject_instruct) {
+    public function syncSubjects($instructor_id, $subject_instruct) { //sync the selected subject with the db
         InstructorSubject::where('instructor_id', $instructor_id)->delete();
         foreach ($subject_instruct as $value) {
             $instructor_subject = new InstructorSubject;
@@ -92,7 +92,7 @@ class InstructorService {
         }
     }
 
-    public function getSummary() {
+    public function getSummary() { //Get Summary of active and inactive instructors
         $collection = DB::table('instructors')
                 ->whereNull('deleted_at')
                 ->select('is_active', DB::raw('count(*) as total'))

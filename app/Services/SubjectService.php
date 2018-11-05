@@ -9,7 +9,7 @@ use App\SubjectCategory;
 
 class SubjectService {
 
-    protected $rules = [
+    protected $rules = [ //validation rules
         'name' => 'required',
         'duration' => 'required|integer|between:1,6',
         'category' => 'required',
@@ -113,7 +113,7 @@ class SubjectService {
         return SubjectCategory::with('subjects')->get();
     }
 
-    public function getSummary() {
+    public function getSummary() { //Get Summary of active and inactive subjects
         $collection = DB::table('subjects')
                 ->whereNull('deleted_at')
                 ->select('is_active', DB::raw('count(*) as total'))
